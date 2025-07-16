@@ -53,34 +53,8 @@ def play():
         position = '({}, {})'.format(cell[0], cell[1])
         print(f"{player.name}, you have selected '{mark}' for position {position}\n\n")
 
+        dashboard.update_cell(cell, mark)
         dashboard.update_valid_cells(cell)
-
-        if cell == "11":
-            dashboard.x11 = mark
-
-        elif cell == "12":
-            dashboard.x12 = mark
-
-        elif cell == "13":
-            dashboard.x13 = mark
-
-        if cell == "21":
-            dashboard.x21 = mark
-
-        elif cell == "22":
-            dashboard.x22 = mark
-
-        elif cell == "23":
-            dashboard.x23 = mark
-
-        if cell == "31":
-            dashboard.x31 = mark
-
-        elif cell == "32":
-            dashboard.x32 = mark
-
-        elif cell == "33":
-            dashboard.x33 = mark
 
         player1.winner, player2.winner = ([True, False]
                                           if dashboard.win(player1.mark)
@@ -126,4 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
