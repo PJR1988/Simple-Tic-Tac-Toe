@@ -14,6 +14,7 @@ class Player():
         shuffle(valid_options)
         self._mark = valid_options[0] if not mark else mark
         self._name = name if name else 'Noughts' if self._mark == 'o' else 'Crosses'
+        self._my_turn = False
         self._winner = False
 
     @classmethod
@@ -37,6 +38,10 @@ class Player():
         return self._mark
 
     @property
+    def my_turn(self):
+        return self._my_turn
+
+    @property
     def winner(self):
         return self._winner
 
@@ -47,6 +52,10 @@ class Player():
     @mark.setter
     def mark(self, mark):
         self._mark = mark
+
+    @my_turn.setter
+    def my_turn(self, my_turn):
+        self._my_turn = my_turn
 
     @winner.setter
     def winner(self, winner):
