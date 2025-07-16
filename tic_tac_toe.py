@@ -1,4 +1,3 @@
-import os
 from random import shuffle
 
 from models.dashboard import Dashboard
