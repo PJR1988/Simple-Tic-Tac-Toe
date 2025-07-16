@@ -33,27 +33,25 @@ def play():
     print(f"Wellcome Players!\n{player1.name} ({player1.mark}) vs {player2.name} ({player2.mark})\nLet's go!!\n")
     dashboard = Dashboard()
 
-    turns = [1,2]
+    turns = [True, False]
     shuffle(turns)
-    turn = turns[0]
+    player1.my_turn, player2.my_turn = turns
 
     while not player1.winner and not player2.winner and not dashboard.full:
         cell = False
 
-        if turn == 1:
-            print(f"It's your turn {player1.name}")
-            mark = player1.mark
-        if turn == 2:
-            print(f"It's your turn {player2.name}")
-            mark = player2.mark
+        player = player1 if player1.my_turn else player2
 
-        while cell not in dashboard.valid_cells and len(dashboard.valid_cells) and turn:
+        print(f"It's your turn {player.name}, playing with {player.mark}.")
+        mark = player.mark
+
+        while cell not in dashboard.valid_cells and len(dashboard.valid_cells):
             cell = input(f"Please, select a cell to play.\n{dashboard.valid_cells}: ")
 
         print("\033[H\033[2J", end="")
 
         position = '({}, {})'.format(cell[0], cell[1])
-        print(f"Selected '{mark}' for position {position}")
+        print(f"{player.name}, you have selected '{mark}' for position {position}\n\n")
 
         dashboard.update_valid_cells(cell)
 
@@ -84,12 +82,14 @@ def play():
         elif cell == "33":
             dashboard.x33 = mark
 
-        if dashboard.win(player1.mark):
-            player2.winner = True
-        if dashboard.win(player2.mark):
-            player2.winner = True
+        player1.winner, player2.winner = ([True, False]
+                                          if dashboard.win(player1.mark)
+                                          else [False, True]
+                                          if dashboard.win(player2.mark)
+                                          else [False, False]
+        )
 
-        turn = 1 if turn == 2 else 2 if turn == 1 else False
+        player1.my_turn, player2.my_turn = [False, True] if player1.my_turn else [True, False]
 
     winner = player1.name if player1.winner else player2.name if player2.winner else False
 
@@ -126,3 +126,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
