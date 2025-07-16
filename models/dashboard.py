@@ -10,28 +10,19 @@ class Dashboard():
         self._x32 = ' '
         self._x33 = ' '
         self._valid_cells = ["11", "12", "13", "21", "22", "23", "31", "32", "33"]
-
-        self._dashboard_state= "   |   |   \n" \
-                               "   |   |   \n" \
-                               "___|___|___\n" \
-                               "   |   |   \n" \
-                               "   |   |   \n" \
-                               "___|___|___\n" \
-                               "   |   |   \n" \
-                               "   |   |   \n" \
-                               "   |   |   "
-        print(self.dashboard_state)
+        self._dashboard_state = self.update_dashboard()
 
     def update_dashboard(self):
-        self.dashboard_state = f"   |   |   \n" \
-                               " {self.x11} | {self.x12} | {self.x13} \n" \
-                               "___|___|___\n" \
-                               "   |   |   \n" \
-                               " {self.x21} | {self.x22} | {self.x23} \n" \
-                               "___|___|___\n" \
-                               "   |   |   \n" \
-                               " {self.x31} | {self.x32} | {self.x33} \n" \
-                               "   |   |   "
+        self.dashboard_state = "   1   2   3 \n" \
+                               "     |   |   \n" \
+                               "1  {} | {} | {} \n" \
+                               "  ___|___|___\n" \
+                               "     |   |   \n" \
+                               "2  {} | {} | {} \n" \
+                               "  ___|___|___\n" \
+                               "     |   |   \n" \
+                               "3  {} | {} | {} \n" \
+                               "     |   |   ".format(*self.get_all_cells())
         print(self.dashboard_state)
 
     def reset_dashboard(self):
