@@ -11,11 +11,27 @@ class Dashboard():
         self._x33 = ' '
         self._valid_cells = ["11", "12", "13", "21", "22", "23", "31", "32", "33"]
 
-        self._dashboard_state="   |   |   \n   |   |   \n___|___|___\n   |   |   \n   |   |   \n___|___|___\n   |   |   \n   |   |   \n   |   |   "
+        self._dashboard_state= "   |   |   \n" \
+                               "   |   |   \n" \
+                               "___|___|___\n" \
+                               "   |   |   \n" \
+                               "   |   |   \n" \
+                               "___|___|___\n" \
+                               "   |   |   \n" \
+                               "   |   |   \n" \
+                               "   |   |   "
         print(self.dashboard_state)
 
     def update_dashboard(self):
-        self.dashboard_state = f"   |   |   \n {self.x11} | {self.x12} | {self.x13} \n___|___|___\n   |   |   \n {self.x21} | {self.x22} | {self.x23} \n___|___|___\n   |   |   \n {self.x31} | {self.x32} | {self.x33} \n   |   |   "
+        self.dashboard_state = f"   |   |   \n" \
+                               " {self.x11} | {self.x12} | {self.x13} \n" \
+                               "___|___|___\n" \
+                               "   |   |   \n" \
+                               " {self.x21} | {self.x22} | {self.x23} \n" \
+                               "___|___|___\n" \
+                               "   |   |   \n" \
+                               " {self.x31} | {self.x32} | {self.x33} \n" \
+                               "   |   |   "
         print(self.dashboard_state)
 
     def reset_dashboard(self):
@@ -31,7 +47,16 @@ class Dashboard():
         selfdashboard_state = self.update_dashboard()
 
     def get_all_lines(self):
-        return [self.line1, self.line2, self.line3, self.colum1, self.colum2, self.colum3, self.diagonal1, self.diagonal2]
+        return [
+                self.line1,
+                self.line2,
+                self.line3,
+                self.colum1,
+                self.colum2,
+                self.colum3,
+                self.diagonal1,
+                self.diagonal2
+               ]
 
     def win(self, sel):
         if [sel, sel, sel] in self.get_all_lines():
