@@ -6,7 +6,9 @@ class Dashboard():
             [' ', ' ', ' ']
         ]
         self._valid_cells = ["11", "12", "13", "21", "22", "23", "31", "32", "33"]
-        self._dashboard_state = self.update_dashboard()
+        self._dashboard_state = ""
+
+        self.update_dashboard()
 
     def update_dashboard(self):
         self.dashboard_state = "   1   2   3 \n" \
@@ -38,7 +40,8 @@ class Dashboard():
             [' ', ' ', ' '],
             [' ', ' ', ' ']
         ]
-        self.dashboard_state = self.update_dashboard()
+
+        self.update_dashboard()
 
     def get_all_lines(self):
         return [
