@@ -60,4 +60,3 @@ class Player():
     @winner.setter
     def winner(self, winner):
         self._winner = winner
-        
