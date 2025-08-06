@@ -49,6 +49,7 @@ def play():
             cell = input(f"Please, select a cell to play.\n{dashboard.valid_cells}: ")
 
         print("\033[H\033[2J", end="")
+        print(f"Wellcome Players!\n{player1.name} ({player1.mark}) vs {player2.name} ({player2.mark})\nLet's go!!\n")
 
         position = '({}, {})'.format(cell[0], cell[1])
         print(f"{player.name}, you have selected '{mark}' for position {position}\n\n")
