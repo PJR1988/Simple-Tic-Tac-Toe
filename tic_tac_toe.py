@@ -4,6 +4,30 @@ from models.dashboard import Dashboard
 from models.player import Player,VALID_OPTIONS
 
 
+def continue_match(first):
+    if first:
+        return True
+
+    yes_answer = ["s", "S", "y", "Y", "Si", "SI", "si", "Yes", "yes", "YES"]
+    no_answer = ["n", "N", "No", "NO", "no"]
+    answer = False
+    valid_answer = []
+    valid_answer.extend(yes_answer)
+    valid_answer.extend(no_answer)
+    count = 0
+
+    while answer not in valid_answer and count < 3:
+        answer = input("Another game? [y/n]: ")
+        count = count + 1
+
+    if count == 3:
+        print("Too many bad answers.")
+
+    if answer in yes_answer:
+        return True
+
+    return False
+
 def get_players():
     player_list = []
     count = 1
@@ -74,27 +98,10 @@ def play():
         print("DRAW!!\n\n")
 
 def main():
-    continue_playing = True
-    while continue_playing:
-        continue_playing = False
+    first = True
+    while continue_match(first):
+        first = False
         play()
-        yes_answer = ["s", "S", "y", "Y", "Si", "SI", "si", "Yes", "yes", "YES"]
-        no_answer = ["n", "N", "No", "NO", "no"]
-        valid_answer = []
-        valid_answer.extend(yes_answer)
-        valid_answer.extend(no_answer)
-        answer = input("Another game? [y/n]: ")
-        count = 0
-
-        while answer not in valid_answer and count < 3:
-            answer = input("Another game? [y/n]: ")
-            count = count + 1
-
-        if count == 3:
-            print("Too many bad answers. Bye!")
-
-        if answer in yes_answer:
-            continue_playing = True
 
     print("Bye!")
 
